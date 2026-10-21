@@ -1,0 +1,101 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.7",
+  "serialNumber": "urn:uuid:03199395-70e3-4dcf-9f79-1e7ec08d1e59",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-21T14:19:16+00:00",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "manufacturer": {
+            "name": "Aqua Security Software Ltd."
+          },
+          "group": "aquasecurity",
+          "name": "trivy",
+          "version": "0.75.0"
+        }
+      ]
+    },
+    "component": {
+      "bom-ref": "d5c65e92-66a0-4265-a95d-2f4b7d366a6f",
+      "type": "application",
+      "name": "app-or-lab-target",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:SchemaVersion",
+          "value": "2"
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "bom-ref": "4f2e452b-4a80-4aa8-9130-e06bd61813d3",
+      "type": "application",
+      "name": "requirements.txt",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:Class",
+          "value": "lang-pkgs"
+        },
+        {
+          "name": "aquasecurity:trivy:Type",
+          "value": "pip"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:pypi/flask@2.0.1",
+      "type": "library",
+      "name": "Flask",
+      "version": "2.0.1",
+      "purl": "pkg:pypi/flask@2.0.1",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "pip"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:pypi/requests@2.25.1",
+      "type": "library",
+      "name": "requests",
+      "version": "2.25.1",
+      "purl": "pkg:pypi/requests@2.25.1",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "pip"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "4f2e452b-4a80-4aa8-9130-e06bd61813d3",
+      "dependsOn": [
+        "pkg:pypi/flask@2.0.1",
+        "pkg:pypi/requests@2.25.1"
+      ]
+    },
+    {
+      "ref": "d5c65e92-66a0-4265-a95d-2f4b7d366a6f",
+      "dependsOn": [
+        "4f2e452b-4a80-4aa8-9130-e06bd61813d3"
+      ]
+    },
+    {
+      "ref": "pkg:pypi/flask@2.0.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/requests@2.25.1",
+      "dependsOn": []
+    }
+  ],
+  "vulnerabilities": []
+}
