@@ -3,8 +3,8 @@
   "Trivy": {
     "Version": "0.75.0"
   },
-  "ReportID": "01a15ec5-e8ca-7521-a25e-a8616fe022ee",
-  "CreatedAt": "2026-10-21T19:33:10.9223362+05:30",
+  "ReportID": "01a15f6d-4032-7103-b9f3-f4c597cc876d",
+  "CreatedAt": "2026-10-21T22:35:57.8100664+05:30",
   "ArtifactName": "app-or-lab-target",
   "ArtifactType": "filesystem",
   "Results": [
@@ -29,16 +29,31 @@
           "AnalyzedBy": "pip"
         },
         {
-          "Name": "requests",
+          "Name": "Werkzeug",
           "Identifier": {
-            "PURL": "pkg:pypi/requests@2.25.1",
-            "UID": "a665148fd0670482"
+            "PURL": "pkg:pypi/werkzeug@2.0.3",
+            "UID": "bbf412e26aca57cf"
           },
-          "Version": "2.25.1",
+          "Version": "2.0.3",
           "Locations": [
             {
               "StartLine": 2,
               "EndLine": 2
+            }
+          ],
+          "AnalyzedBy": "pip"
+        },
+        {
+          "Name": "requests",
+          "Identifier": {
+            "PURL": "pkg:pypi/requests@2.25.1",
+            "UID": "cdf3a44afedca904"
+          },
+          "Version": "2.25.1",
+          "Locations": [
+            {
+              "StartLine": 3,
+              "EndLine": 3
             }
           ],
           "AnalyzedBy": "pip"
@@ -182,6 +197,636 @@
           "LastModifiedDate": "2026-06-17T10:26:50.7Z"
         },
         {
+          "VulnerabilityID": "CVE-2023-25577",
+          "VendorIDs": [
+            "GHSA-xg9f-g7g7-2323"
+          ],
+          "PkgName": "Werkzeug",
+          "PkgIdentifier": {
+            "PURL": "pkg:pypi/werkzeug@2.0.3",
+            "UID": "bbf412e26aca57cf"
+          },
+          "InstalledVersion": "2.0.3",
+          "FixedVersion": "2.2.3",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-25577",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory pip",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Apip"
+          },
+          "Fingerprint": "sha256:eba06c08d46b66d227f79969f06aa00e18a3944fe39111fcd494b9cf054d0912",
+          "Title": "python-werkzeug: high resource usage when parsing multipart form data with many fields",
+          "Description": "Werkzeug is a comprehensive WSGI web application library. Prior to version 2.2.3, Werkzeug's multipart form data parser will parse an unlimited number of parts, including file parts. Parts can be a small amount of bytes, but each requires CPU time to parse and may use more memory as Python data. If a request can be made to an endpoint that accesses `request.data`, `request.form`, `request.files`, or `request.get_data(parse_form_data=False)`, it can cause unexpectedly high resource usage. This allows an attacker to cause a denial of service by sending crafted multipart data to an endpoint that will parse it. The amount of CPU time required can block worker processes from handling legitimate requests. The amount of RAM required can trigger an out of memory kill of the process. Unlimited file parts can use up memory and file handles. If many concurrent requests are sent continuously, this can exhaust or kill all available workers. Version 2.2.3 contains a patch for this issue.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-770"
+          ],
+          "VendorSeverity": {
+            "amazon": 3,
+            "cbl-mariner": 3,
+            "ghsa": 3,
+            "nvd": 3,
+            "oracle-oval": 1,
+            "photon": 3,
+            "redhat": 3,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2023-25577",
+            "https://github.com/pallets/werkzeug",
+            "https://github.com/pallets/werkzeug/commit/517cac5a804e8c4dc4ed038bb20dacd038e7a9f1",
+            "https://github.com/pallets/werkzeug/releases/tag/2.2.3",
+            "https://github.com/pallets/werkzeug/security/advisories/GHSA-xg9f-g7g7-2323",
+            "https://github.com/pypa/advisory-database/tree/main/vulns/werkzeug/PYSEC-2023-58.yaml",
+            "https://linux.oracle.com/cve/CVE-2023-25577.html",
+            "https://linux.oracle.com/errata/ELSA-2023-12709.html",
+            "https://nvd.nist.gov/vuln/detail/CVE-2023-25577",
+            "https://security.netapp.com/advisory/ntap-20230818-0003",
+            "https://security.netapp.com/advisory/ntap-20230818-0003/",
+            "https://ubuntu.com/security/notices/USN-5948-1",
+            "https://ubuntu.com/security/notices/USN-5948-2",
+            "https://www.cve.org/CVERecord?id=CVE-2023-25577",
+            "https://www.debian.org/security/2023/dsa-5470"
+          ],
+          "PublishedDate": "2023-02-14T20:15:17.543Z",
+          "LastModifiedDate": "2026-06-17T05:41:31.847Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2024-34069",
+          "VendorIDs": [
+            "GHSA-2g68-c3qc-8985"
+          ],
+          "PkgName": "Werkzeug",
+          "PkgIdentifier": {
+            "PURL": "pkg:pypi/werkzeug@2.0.3",
+            "UID": "bbf412e26aca57cf"
+          },
+          "InstalledVersion": "2.0.3",
+          "FixedVersion": "3.0.3",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-34069",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory pip",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Apip"
+          },
+          "Fingerprint": "sha256:b3cfdefbfbd175b0257fd7ed6a3279d59356bde05e41f9470df3b49e7a8e6c55",
+          "Title": "python-werkzeug: user may execute code on a developer's machine",
+          "Description": "Werkzeug is a comprehensive WSGI web application library. The debugger in affected versions of Werkzeug can allow an attacker to execute code on a developer's machine under some circumstances. This requires the attacker to get the developer to interact with a domain and subdomain they control, and enter the debugger PIN, but if they are successful it allows access to the debugger even if it is only running on localhost. This also requires the attacker to guess a URL in the developer's application that will trigger the debugger. This vulnerability is fixed in 3.0.3.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-352"
+          ],
+          "VendorSeverity": {
+            "amazon": 3,
+            "azure": 3,
+            "cbl-mariner": 3,
+            "ghsa": 3,
+            "photon": 3,
+            "redhat": 3,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2024-34069",
+            "https://advisory.echohq.com/cve/CVE-2024-34069",
+            "https://github.com/pallets/werkzeug",
+            "https://github.com/pallets/werkzeug/commit/3386395b24c7371db11a5b8eaac0c91da5362692",
+            "https://github.com/pallets/werkzeug/security/advisories/GHSA-2g68-c3qc-8985",
+            "https://lists.debian.org/debian-lts-announce/2025/02/msg00026.html",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/H4SH32AM3CTPMAAEOIDAN7VU565LO4IR",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/H4SH32AM3CTPMAAEOIDAN7VU565LO4IR/",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/HFERFN7PINV4MOGMGA3DPIXJPDCYOEJZ",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/HFERFN7PINV4MOGMGA3DPIXJPDCYOEJZ/",
+            "https://nvd.nist.gov/vuln/detail/CVE-2024-34069",
+            "https://security.netapp.com/advisory/ntap-20240614-0004",
+            "https://security.netapp.com/advisory/ntap-20240614-0004/",
+            "https://ubuntu.com/security/notices/USN-6799-1",
+            "https://www.cve.org/CVERecord?id=CVE-2024-34069"
+          ],
+          "PublishedDate": "2024-05-06T15:15:23.99Z",
+          "LastModifiedDate": "2026-06-17T07:32:50.85Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2023-46136",
+          "VendorIDs": [
+            "GHSA-hrfv-mqp8-q5rw"
+          ],
+          "PkgName": "Werkzeug",
+          "PkgIdentifier": {
+            "PURL": "pkg:pypi/werkzeug@2.0.3",
+            "UID": "bbf412e26aca57cf"
+          },
+          "InstalledVersion": "2.0.3",
+          "FixedVersion": "3.0.1, 2.3.8",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-46136",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory pip",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Apip"
+          },
+          "Fingerprint": "sha256:cfe0830f6c07808fb0f8ce4295832015044180ff92a2cea1534569ce0509b564",
+          "Title": "python-werkzeug: high resource consumption leading to denial of service",
+          "Description": "Werkzeug is a comprehensive WSGI web application library. In versions on the 3.x branch prior to 3.0.1 and on the 2.x branch prior to 2.3.8, if an upload of a file that starts with CR or LF and then is followed by megabytes of data without these characters: all of these bytes are appended chunk by chunk into internal bytearray and lookup for boundary is performed on growing buffer. This allows an attacker to cause a denial of service by sending crafted multipart data to an endpoint that will parse it. The amount of CPU time required can block worker processes from handling legitimate requests. This vulnerability has been patched in version 3.0.1 and 2.3.8.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-400",
+            "CWE-407",
+            "CWE-787"
+          ],
+          "VendorSeverity": {
+            "azure": 3,
+            "cbl-mariner": 3,
+            "ghsa": 2,
+            "nvd": 3,
+            "photon": 3,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:A/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 5.7
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2023-46136",
+            "https://advisory.echohq.com/cve/CVE-2023-46136",
+            "https://github.com/pallets/werkzeug",
+            "https://github.com/pallets/werkzeug/commit/b1916c0c083e0be1c9d887ee2f3d696922bfc5c1",
+            "https://github.com/pallets/werkzeug/commit/cbb446fdcada7685fce936ded01b76c08dbd6eb5",
+            "https://github.com/pallets/werkzeug/commit/f2300208d5e2a5076cbbb4c2aad71096fd040ef9",
+            "https://github.com/pallets/werkzeug/commit/f3c803b3ade485a45f12b6d6617595350c0f03e2",
+            "https://github.com/pallets/werkzeug/security/advisories/GHSA-hrfv-mqp8-q5rw",
+            "https://github.com/pypa/advisory-database/tree/main/vulns/werkzeug/PYSEC-2023-221.yaml",
+            "https://nvd.nist.gov/vuln/detail/CVE-2023-46136",
+            "https://security.netapp.com/advisory/ntap-20231124-0008",
+            "https://security.netapp.com/advisory/ntap-20231124-0008/",
+            "https://www.cve.org/CVERecord?id=CVE-2023-46136"
+          ],
+          "PublishedDate": "2023-10-25T18:17:36.753Z",
+          "LastModifiedDate": "2026-06-17T06:30:13.7Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2024-49766",
+          "VendorIDs": [
+            "GHSA-f9vj-2wh5-fj8j"
+          ],
+          "PkgName": "Werkzeug",
+          "PkgIdentifier": {
+            "PURL": "pkg:pypi/werkzeug@2.0.3",
+            "UID": "bbf412e26aca57cf"
+          },
+          "InstalledVersion": "2.0.3",
+          "FixedVersion": "3.0.6",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-49766",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory pip",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Apip"
+          },
+          "Fingerprint": "sha256:607143795c2f30f322feaaa887c28c4ed9328ac453b373542635b7e71f18a2e2",
+          "Title": "werkzeug: python-werkzeug: Werkzeug safe_join not safe on Windows",
+          "Description": "Werkzeug is a Web Server Gateway Interface web application library. On Python \u003c 3.11 on Windows, os.path.isabs() does not catch UNC paths like //server/share. Werkzeug's safe_join() relies on this check, and so can produce a path that is not safe, potentially allowing unintended access to data. Applications using Python \u003e= 3.11, or not using Windows, are not vulnerable. Werkzeug version 3.0.6 contains a patch.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-22"
+          ],
+          "VendorSeverity": {
+            "ghsa": 2,
+            "nvd": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V40Vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N",
+              "V40Score": 6.3
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+              "V3Score": 5.3
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N",
+              "V3Score": 3.7
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2024-49766",
+            "https://advisory.echohq.com/cve/CVE-2024-49766",
+            "https://github.com/pallets/werkzeug",
+            "https://github.com/pallets/werkzeug/commit/2767bcb10a7dd1c297d812cc5e6d11a474c1f092",
+            "https://github.com/pallets/werkzeug/releases/tag/3.0.6",
+            "https://github.com/pallets/werkzeug/security/advisories/GHSA-f9vj-2wh5-fj8j",
+            "https://nvd.nist.gov/vuln/detail/CVE-2024-49766",
+            "https://security.netapp.com/advisory/ntap-20250131-0005",
+            "https://security.netapp.com/advisory/ntap-20250131-0005/",
+            "https://www.cve.org/CVERecord?id=CVE-2024-49766"
+          ],
+          "PublishedDate": "2024-10-25T20:15:04.41Z",
+          "LastModifiedDate": "2026-06-17T08:00:24.517Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2024-49767",
+          "VendorIDs": [
+            "GHSA-q34m-jh98-gwm2"
+          ],
+          "PkgName": "Werkzeug",
+          "PkgIdentifier": {
+            "PURL": "pkg:pypi/werkzeug@2.0.3",
+            "UID": "bbf412e26aca57cf"
+          },
+          "InstalledVersion": "2.0.3",
+          "FixedVersion": "3.0.6",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-49767",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory pip",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Apip"
+          },
+          "Fingerprint": "sha256:0e330d803f6e855a372a689c0b15901308c8128caca31efe609f1cd29a52ab14",
+          "Title": "werkzeug: python-werkzeug: Werkzeug possible resource exhaustion when parsing file data in forms",
+          "Description": "Werkzeug is a Web Server Gateway Interface web application library. Applications using `werkzeug.formparser.MultiPartParser` corresponding to a version of Werkzeug prior to 3.0.6 to parse `multipart/form-data` requests (e.g. all flask applications) are vulnerable to a relatively simple but effective resource exhaustion (denial of service) attack. A specifically crafted form submission request can cause the parser to allocate and block 3 to 8 times the upload size in main memory. There is no upper limit; a single upload at 1 Gbit/s can exhaust 32 GB of RAM in less than 60 seconds. Werkzeug version 3.0.6 fixes this issue.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-400",
+            "CWE-770"
+          ],
+          "VendorSeverity": {
+            "azure": 3,
+            "cbl-mariner": 3,
+            "ghsa": 2,
+            "nvd": 3,
+            "photon": 3,
+            "redhat": 2,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V40Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+              "V3Score": 7.5,
+              "V40Score": 6.9
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2024-49767",
+            "https://advisory.echohq.com/cve/CVE-2024-49767",
+            "https://github.com/pallets/quart/commit/5e78c4169b8eb66b91ead3e62d44721b9e1644ee",
+            "https://github.com/pallets/quart/commit/abb04a512496206de279225340ed022852fbf51f",
+            "https://github.com/pallets/werkzeug",
+            "https://github.com/pallets/werkzeug/commit/50cfeebcb0727e18cc52ffbeb125f4a66551179b",
+            "https://github.com/pallets/werkzeug/commit/cbb446fdcada7685fce936ded01b76c08dbd6eb5",
+            "https://github.com/pallets/werkzeug/releases/tag/3.0.6",
+            "https://github.com/pallets/werkzeug/security/advisories/GHSA-q34m-jh98-gwm2",
+            "https://nvd.nist.gov/vuln/detail/CVE-2024-49767",
+            "https://security.netapp.com/advisory/ntap-20250103-0007",
+            "https://security.netapp.com/advisory/ntap-20250103-0007/",
+            "https://ubuntu.com/security/notices/USN-7093-1",
+            "https://www.cve.org/CVERecord?id=CVE-2024-49767"
+          ],
+          "PublishedDate": "2024-10-25T20:15:04.53Z",
+          "LastModifiedDate": "2026-06-17T08:00:24.643Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-66221",
+          "VendorIDs": [
+            "GHSA-hgf8-39gv-g3f2"
+          ],
+          "PkgName": "Werkzeug",
+          "PkgIdentifier": {
+            "PURL": "pkg:pypi/werkzeug@2.0.3",
+            "UID": "bbf412e26aca57cf"
+          },
+          "InstalledVersion": "2.0.3",
+          "FixedVersion": "3.1.4",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-66221",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory pip",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Apip"
+          },
+          "Fingerprint": "sha256:9cc9e5fe5597cdfd49483fabe3c11e9d233c5bdb57e878ae71d5dc1632c180dc",
+          "Title": "Werkzeug: Werkzeug: Denial of service via Windows device names in path segments",
+          "Description": "Werkzeug is a comprehensive WSGI web application library. Prior to version 3.1.4, Werkzeug's safe_join function allows path segments with Windows device names. On Windows, there are special device names such as CON, AUX, etc that are implicitly present and readable in every directory. send_from_directory uses safe_join to safely serve files at user-specified paths under a directory. If the application is running on Windows, and the requested path ends with a special device name, the file will be opened successfully, but reading will hang indefinitely. This issue has been patched in version 3.1.4.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-67"
+          ],
+          "VendorSeverity": {
+            "ghsa": 2,
+            "nvd": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V40Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+              "V40Score": 6.3
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+              "V3Score": 5.3
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2025-66221",
+            "https://advisory.echohq.com/cve/CVE-2025-66221",
+            "https://github.com/advisories/GHSA-hgf8-39gv-g3f2",
+            "https://github.com/pallets/werkzeug",
+            "https://github.com/pallets/werkzeug/commit/4b833376a45c323a189cd11d2362bcffdb1c0c13",
+            "https://github.com/pallets/werkzeug/releases/tag/3.1.4",
+            "https://github.com/pallets/werkzeug/security/advisories/GHSA-hgf8-39gv-g3f2",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-66221",
+            "https://www.cve.org/CVERecord?id=CVE-2025-66221"
+          ],
+          "PublishedDate": "2025-11-29T03:16:00.05Z",
+          "LastModifiedDate": "2026-10-07T20:10:01.97Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-102598",
+          "VendorIDs": [
+            "GHSA-g6x2-hccm-hh4m"
+          ],
+          "PkgName": "Werkzeug",
+          "PkgIdentifier": {
+            "PURL": "pkg:pypi/werkzeug@2.0.3",
+            "UID": "bbf412e26aca57cf"
+          },
+          "InstalledVersion": "2.0.3",
+          "FixedVersion": "3.1.9",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-102598",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory pip",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Apip"
+          },
+          "Fingerprint": "sha256:bbbeb5f9dfb20e0109235a0b85ece0a0f27a66970a8302659af6de01fbc014db",
+          "Title": "werkzeug: werkzeug: Denial of Service via safe_join() Windows special device paths",
+          "Description": "Werkzeug is a comprehensive WSGI web application library. Prior to 3.1.9, the safe_join function used by send_from_directory can allow a NUL: special-device path because safe_join checks the Windows device name without first removing an empty NTFS ADS marker. The trigger is that an application runs on Windows with NTFS and serves a user-specified path ending in a special device name such as NUL:. The attack mechanism is that a requested path ends in a Windows special device name with an empty ADS marker. The impact is that the special device opens successfully and the file read hangs indefinitely. This issue is fixed in version 3.1.9.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-67"
+          ],
+          "VendorSeverity": {
+            "ghsa": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V40Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+              "V40Score": 6.3
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-102598",
+            "https://advisory.echohq.com/cve/CVE-2026-102598",
+            "https://github.com/pallets/werkzeug",
+            "https://github.com/pallets/werkzeug/commit/8d77320bcdf3a34941ec06dcf16b03c065cd21b6",
+            "https://github.com/pallets/werkzeug/pull/3309",
+            "https://github.com/pallets/werkzeug/releases/tag/3.1.9",
+            "https://github.com/pallets/werkzeug/security/advisories/GHSA-g6x2-hccm-hh4m",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-102598",
+            "https://www.cve.org/CVERecord?id=CVE-2026-102598"
+          ],
+          "PublishedDate": "2026-09-29T16:17:06.01Z",
+          "LastModifiedDate": "2026-09-30T19:38:27.293Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-21860",
+          "VendorIDs": [
+            "GHSA-87hc-h4r5-73f7"
+          ],
+          "PkgName": "Werkzeug",
+          "PkgIdentifier": {
+            "PURL": "pkg:pypi/werkzeug@2.0.3",
+            "UID": "bbf412e26aca57cf"
+          },
+          "InstalledVersion": "2.0.3",
+          "FixedVersion": "3.1.5",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-21860",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory pip",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Apip"
+          },
+          "Fingerprint": "sha256:2ac89fd56821d7912fd2d9e8e8ec32439acc256416b59257f899f4cb3ae2987d",
+          "Title": " Werkzeug safe_join() allows Windows special device names with compound extensions",
+          "Description": "Werkzeug is a comprehensive WSGI web application library. Prior to version 3.1.5, Werkzeug's safe_join function allows path segments with Windows device names that have file extensions or trailing spaces. On Windows, there are special device names such as CON, AUX, etc that are implicitly present and readable in every directory. Windows still accepts them with any file extension, such as CON.txt, or trailing spaces such as CON. This issue has been patched in version 3.1.5.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-67"
+          ],
+          "VendorSeverity": {
+            "ghsa": 2,
+            "nvd": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+              "V40Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+              "V3Score": 5.3,
+              "V40Score": 6.3
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "https://advisory.echohq.com/cve/CVE-2026-21860",
+            "https://github.com/pallets/werkzeug",
+            "https://github.com/pallets/werkzeug/commit/7ae1d254e04a0c33e241ac1cca4783ce6c875ca3",
+            "https://github.com/pallets/werkzeug/security/advisories/GHSA-87hc-h4r5-73f7",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-21860"
+          ],
+          "PublishedDate": "2026-01-08T19:15:59Z",
+          "LastModifiedDate": "2026-06-17T10:19:02.74Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-27199",
+          "VendorIDs": [
+            "GHSA-29vq-49wr-vm6x"
+          ],
+          "PkgName": "Werkzeug",
+          "PkgIdentifier": {
+            "PURL": "pkg:pypi/werkzeug@2.0.3",
+            "UID": "bbf412e26aca57cf"
+          },
+          "InstalledVersion": "2.0.3",
+          "FixedVersion": "3.1.6",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-27199",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory pip",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Apip"
+          },
+          "Fingerprint": "sha256:1b2f49f4e348510884aa73b1a4c4e7456ad7774e7dd57f4ac5215604026a4264",
+          "Title": " Werkzeug safe_join() allows Windows special device names",
+          "Description": "Werkzeug is a comprehensive WSGI web application library. Versions 3.1.5 and below, the safe_join function allows Windows device names as filenames if preceded by other path segments. This was previously reported as GHSA-hgf8-39gv-g3f2, but the added filtering failed to account for the fact that safe_join accepts paths with multiple segments, such as example/NUL. The function send_from_directory uses safe_join to safely serve files at user-specified paths under a directory. If the application is running on Windows, and the requested path ends with a special device name, the file will be opened successfully, but reading will hang indefinitely. This issue has been fixed in version 3.1.6.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-67"
+          ],
+          "VendorSeverity": {
+            "ghsa": 2,
+            "nvd": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V40Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+              "V40Score": 6.3
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "https://advisory.echohq.com/cve/CVE-2026-27199",
+            "https://github.com/pallets/werkzeug",
+            "https://github.com/pallets/werkzeug/commit/f407712fdc60a09c2b3f4fe7db557703e5d9338d",
+            "https://github.com/pallets/werkzeug/releases/tag/3.1.6",
+            "https://github.com/pallets/werkzeug/security/advisories/GHSA-29vq-49wr-vm6x",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-27199"
+          ],
+          "PublishedDate": "2026-02-21T06:17:00.71Z",
+          "LastModifiedDate": "2026-06-17T10:26:50.207Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2023-23934",
+          "VendorIDs": [
+            "GHSA-px8h-6qxv-m22q"
+          ],
+          "PkgName": "Werkzeug",
+          "PkgIdentifier": {
+            "PURL": "pkg:pypi/werkzeug@2.0.3",
+            "UID": "bbf412e26aca57cf"
+          },
+          "InstalledVersion": "2.0.3",
+          "FixedVersion": "2.2.3",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-23934",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory pip",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Apip"
+          },
+          "Fingerprint": "sha256:f2a379b3fc54124c1a061f5c8fb932a0bd75509c6694a84cb0eccf1de576c53f",
+          "Title": "python-werkzeug: cookie prefixed with = can shadow unprefixed cookie",
+          "Description": "Werkzeug is a comprehensive WSGI web application library. Browsers may allow \"nameless\" cookies that look like `=value` instead of `key=value`. A vulnerable browser may allow a compromised application on an adjacent subdomain to exploit this to set a cookie like `=__Host-test=bad` for another subdomain. Werkzeug prior to 2.2.3 will parse the cookie `=__Host-test=bad` as __Host-test=bad`. If a Werkzeug application is running next to a vulnerable or malicious subdomain which sets such a cookie using a vulnerable browser, the Werkzeug application will see the bad cookie value but the valid cookie key. The issue is fixed in Werkzeug 2.2.3.",
+          "Severity": "LOW",
+          "CweIDs": [
+            "CWE-20"
+          ],
+          "VendorSeverity": {
+            "amazon": 2,
+            "cbl-mariner": 1,
+            "ghsa": 1,
+            "nvd": 1,
+            "oracle-oval": 1,
+            "photon": 1,
+            "redhat": 1,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:A/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:N",
+              "V3Score": 2.6
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+              "V3Score": 3.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:A/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:N",
+              "V3Score": 2.6
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2023-23934",
+            "https://github.com/pallets/werkzeug",
+            "https://github.com/pallets/werkzeug/commit/cf275f42acad1b5950c50ffe8ef58fe62cdce028",
+            "https://github.com/pallets/werkzeug/releases/tag/2.2.3",
+            "https://github.com/pallets/werkzeug/security/advisories/GHSA-px8h-6qxv-m22q",
+            "https://github.com/pypa/advisory-database/tree/main/vulns/werkzeug/PYSEC-2023-57.yaml",
+            "https://linux.oracle.com/cve/CVE-2023-23934.html",
+            "https://linux.oracle.com/errata/ELSA-2023-12709.html",
+            "https://nvd.nist.gov/vuln/detail/CVE-2023-23934",
+            "https://security.netapp.com/advisory/ntap-20230818-0003",
+            "https://security.netapp.com/advisory/ntap-20230818-0003/",
+            "https://ubuntu.com/security/notices/USN-5948-1",
+            "https://ubuntu.com/security/notices/USN-5948-2",
+            "https://www.cve.org/CVERecord?id=CVE-2023-23934",
+            "https://www.debian.org/security/2023/dsa-5470"
+          ],
+          "PublishedDate": "2023-02-14T20:15:17.37Z",
+          "LastModifiedDate": "2026-06-17T05:38:19.313Z"
+        },
+        {
           "VulnerabilityID": "CVE-2023-32681",
           "VendorIDs": [
             "GHSA-j8r2-6x86-q33q"
@@ -189,7 +834,7 @@
           "PkgName": "requests",
           "PkgIdentifier": {
             "PURL": "pkg:pypi/requests@2.25.1",
-            "UID": "a665148fd0670482"
+            "UID": "cdf3a44afedca904"
           },
           "InstalledVersion": "2.25.1",
           "FixedVersion": "2.31.0",
@@ -273,7 +918,7 @@
           "PkgName": "requests",
           "PkgIdentifier": {
             "PURL": "pkg:pypi/requests@2.25.1",
-            "UID": "a665148fd0670482"
+            "UID": "cdf3a44afedca904"
           },
           "InstalledVersion": "2.25.1",
           "FixedVersion": "2.32.0",
@@ -348,7 +993,7 @@
           "PkgName": "requests",
           "PkgIdentifier": {
             "PURL": "pkg:pypi/requests@2.25.1",
-            "UID": "a665148fd0670482"
+            "UID": "cdf3a44afedca904"
           },
           "InstalledVersion": "2.25.1",
           "FixedVersion": "2.32.4",
@@ -432,7 +1077,7 @@
           "PkgName": "requests",
           "PkgIdentifier": {
             "PURL": "pkg:pypi/requests@2.25.1",
-            "UID": "a665148fd0670482"
+            "UID": "cdf3a44afedca904"
           },
           "InstalledVersion": "2.25.1",
           "FixedVersion": "2.33.0",
@@ -485,6 +1130,25 @@
           ],
           "PublishedDate": "2026-03-25T17:16:52.97Z",
           "LastModifiedDate": "2026-06-17T10:25:00.443Z"
+        }
+      ]
+    },
+    {
+      "Target": "__pycache__/app.cpython-312.pyc",
+      "Class": "secret",
+      "Secrets": [
+        {
+          "RuleID": "stripe-secret-token",
+          "Category": "Stripe",
+          "Severity": "CRITICAL",
+          "Title": "Stripe Secret Key",
+          "StartLine": 4,
+          "EndLine": 4,
+          "Code": {
+            "Lines": null
+          },
+          "Match": "Binary file \"__pycache__/app.cpython-312.pyc\" matches a rule \"Stripe Secret Key\"",
+          "Offset": 23
         }
       ]
     },

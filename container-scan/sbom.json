@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
-  "serialNumber": "urn:uuid:03199395-70e3-4dcf-9f79-1e7ec08d1e59",
+  "serialNumber": "urn:uuid:8da0a174-b6c0-4ba1-9537-3cab9d00b6b7",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-21T14:19:16+00:00",
+    "timestamp": "2026-10-21T17:06:28+00:00",
     "tools": {
       "components": [
         {
@@ -20,7 +20,7 @@
       ]
     },
     "component": {
-      "bom-ref": "d5c65e92-66a0-4265-a95d-2f4b7d366a6f",
+      "bom-ref": "c8fadbfa-47f2-475b-86c6-982c36e49da7",
       "type": "application",
       "name": "app-or-lab-target",
       "properties": [
@@ -33,7 +33,7 @@
   },
   "components": [
     {
-      "bom-ref": "4f2e452b-4a80-4aa8-9130-e06bd61813d3",
+      "bom-ref": "d61a2e00-3d3f-4586-a490-1df6e08e7e59",
       "type": "application",
       "name": "requirements.txt",
       "properties": [
@@ -72,20 +72,34 @@
           "value": "pip"
         }
       ]
+    },
+    {
+      "bom-ref": "pkg:pypi/werkzeug@2.0.3",
+      "type": "library",
+      "name": "Werkzeug",
+      "version": "2.0.3",
+      "purl": "pkg:pypi/werkzeug@2.0.3",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "pip"
+        }
+      ]
     }
   ],
   "dependencies": [
     {
-      "ref": "4f2e452b-4a80-4aa8-9130-e06bd61813d3",
+      "ref": "c8fadbfa-47f2-475b-86c6-982c36e49da7",
       "dependsOn": [
-        "pkg:pypi/flask@2.0.1",
-        "pkg:pypi/requests@2.25.1"
+        "d61a2e00-3d3f-4586-a490-1df6e08e7e59"
       ]
     },
     {
-      "ref": "d5c65e92-66a0-4265-a95d-2f4b7d366a6f",
+      "ref": "d61a2e00-3d3f-4586-a490-1df6e08e7e59",
       "dependsOn": [
-        "4f2e452b-4a80-4aa8-9130-e06bd61813d3"
+        "pkg:pypi/flask@2.0.1",
+        "pkg:pypi/requests@2.25.1",
+        "pkg:pypi/werkzeug@2.0.3"
       ]
     },
     {
@@ -94,6 +108,10 @@
     },
     {
       "ref": "pkg:pypi/requests@2.25.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/werkzeug@2.0.3",
       "dependsOn": []
     }
   ],
