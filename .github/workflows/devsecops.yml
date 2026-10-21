@@ -40,7 +40,7 @@ jobs:
 
       # --- 2. Dependency & Filesystem Scan (Trivy) ---
       - name: Run Trivy Filesystem Scan
-        uses: aquasecurity/trivy-action@0.24.0
+        uses: aquasecurity/trivy-action@master
         with:
           scan-type: 'fs'
           scan-ref: 'app-or-lab-target/'
@@ -50,7 +50,7 @@ jobs:
 
       # --- 3. SBOM Generation ---
       - name: Generate CycloneDX SBOM
-        uses: aquasecurity/trivy-action@0.24.0
+        uses: aquasecurity/trivy-action@master
         with:
           scan-type: 'fs'
           scan-ref: 'app-or-lab-target/'
@@ -62,7 +62,7 @@ jobs:
         run: docker build -t devsecops-lab:latest app-or-lab-target/
 
       - name: Run Trivy Container Image Scan
-        uses: aquasecurity/trivy-action@0.24.0
+        uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'devsecops-lab:latest'
           format: 'table'
